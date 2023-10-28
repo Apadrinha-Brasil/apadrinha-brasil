@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "prefer-const": "error",
     "@typescript-eslint/interface-name-prefix": "off",
@@ -18,17 +18,18 @@
     "@typescript-eslint/no-unused-vars": "error",
     "max-len": ["error", { "code": 100 }],
     "comma-spacing": ["warn", { "before": false, "after": true }],
+    "semi": ["error", "never"],
     "no-loss-of-precision": ["error"],
     "no-unused-private-class-members": ["warn"],
     "comma-dangle": ["off", "never"],
     "dot-location": ["warn", "property"],
     "object-curly-newline": ["error", {
-      "ObjectExpression": "always",
-      "ObjectPattern": "never",
+      "ObjectExpression": { "multiline": true, "minProperties": 4 },
+      "ObjectPattern": { "multiline": true, "minProperties": 4 },
       "ImportDeclaration": "never",
-      "ExportDeclaration": "never",
-      "minProperties": 4
-    }]
+      "ExportDeclaration": { "multiline": true, "minProperties": 4 }
+    }],
+    "object-curly-spacing": ["error", "always"]
   },
   "overrides": [
     {

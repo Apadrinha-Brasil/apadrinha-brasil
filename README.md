@@ -1,5 +1,5 @@
 # Apadrinha Brasil App
-- [ ] TODO: Add a quick description of the projeto here.
+- [ ] TODO: Add a quick description of the project here.
 
 ## Getting Started
 These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
@@ -37,6 +37,12 @@ Replace `<username>` and `<password>` to any that you wish. If you'd like to use
 1. Once your local database is up and running you will need to apply all migration history to it. To achieve that run the following command.
 ```
 npx prisma migrate dev
+```
+
+### Run the application
+1. To start the development server run this command.
+```
+yarn dev
 ```
 
 ## Deploy on Vercel

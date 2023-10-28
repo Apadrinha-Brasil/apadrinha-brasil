@@ -45,6 +45,10 @@ npx prisma migrate dev
 yarn dev
 ```
 
+### ES Lint and Prettier
+It is recommended to instal the ES Lint extension (by Microsoft) for VS Code as it highlights lint and prettier errors. It will also enable `.vscode/settings.json` to enforce lint fixes when files are saved. 
+> **Note**: Applying fixes when saving files can become annoying for some people so this feature may change in the future based on feedback from the dev team. If this is something you'd like to discuss about, please bring the subject up to be discussed with the dev team.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

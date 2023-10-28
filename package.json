@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:db": "docker run --name ab_dev -e POSTGRES_PASSWORD=1234 -e POSTGRES_USER=admin -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres",
+    "build:db": "docker run --name ab_dev -e POSTGRES_PASSWORD=$DB_PASSWORD -e POSTGRES_USER=DB_USERNAME -p 5432:5432 -v pgdata:/var/lib/postgresql/data -d postgres",
     "start:db": "docker start ab_dev",
     "stop:db": "docker stop ab_dev"
   },

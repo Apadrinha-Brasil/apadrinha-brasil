@@ -1,33 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Apadrinha Brasil App
+- [ ] TODO: Add a quick description of the projeto here.
 
 ## Getting Started
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
-First, run the development server:
+### Prerequisites
+Before you begin, ensure you have met the following requirements:
+- **Node.js**: Ensure you have Node.js version 16 installed. You can download it from [nodejs.org](https://nodejs.org/).
+- **Yarn**: The package manager is Yarn. Make sure to install it before proceeding. Follow the instructions in the [official website](https://classic.yarnpkg.com/en/docs/install).
+- **Docker**: We use docker to run a containerized PostgreSQL database. You will need to have the Docker CLI installed to run the required commands to create, start, and stop the container. We recommend installing Docker Desktop which is the Docker's GUI software for managing containers. Once you install Docker Desktop it will have installed the Docker CLI as well. Go to the [official website](https://www.docker.com/products/docker-desktop/) to install Docker Desktop.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### First steps
+1. Clone the repository
+```
+git clone https://github.com/Apadrinha-Brasil/apadrinha-brasil.git
+```
+2. Navigate to the project directory
+```
+cd apadrinha-brasil
+```
+3. Install dependencies
+```
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configuration
+1. Create a configuration file (e.g., .env) and set the required environment variables. You will need it to set up the database.
+```
+DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@localhost:5432/ab_dev
+DB_USERNAME=<username>
+DB_PASSWORD=<password>
+```
+Replace `<username>` and `<password>` to any that you wish. If you'd like to use PgAdmin to more easily manage the PostgreSQL databse, you will need these credentials to connect PgAdmin to the containerized database.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Setup PostgreSQL database
+1. Once your local database is up and running you will need to apply all migration history to it. To achieve that run the following command.
+```
+npx prisma migrate dev
+```
 
 ## Deploy on Vercel
 

@@ -1,3 +1,47 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "prefer-const": "error",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "max-len": ["error", { "code": 100 }],
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "no-loss-of-precision": ["error"],
+    "no-unused-private-class-members": ["warn"],
+    "comma-dangle": ["off", "never"],
+    "dot-location": ["warn", "property"],
+    "object-curly-newline": ["error", {
+      "ObjectExpression": "always",
+      "ObjectPattern": "never",
+      "ImportDeclaration": "never",
+      "ExportDeclaration": "never",
+      "minProperties": 4
+    }]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "error"
+      }
+    },
+    {
+      "files": ["*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ]
 }

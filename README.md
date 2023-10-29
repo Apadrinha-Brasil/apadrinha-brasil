@@ -46,7 +46,7 @@ yarn dev
 ```
 
 ### ES Lint and Prettier
-It is recommended to instal the ES Lint extension (by Microsoft) for VS Code as it highlights lint errors. It will also enable `.vscode/settings.json` to enforce lint fixes when files are saved. 
+It is recommended to install the ES Lint extension (by Microsoft) for VS Code as it highlights lint errors. It will also enable `.vscode/settings.json` to enforce lint fixes when files are saved. 
 > **Note**: Applying fixes when saving files can become annoying for some people so this feature may change in the future based on feedback from the dev team. If this is something you'd like to discuss about, please bring the subject up to be discussed with the dev team.
 
 ## Deploy on Vercel

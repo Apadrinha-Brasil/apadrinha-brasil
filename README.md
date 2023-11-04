@@ -46,7 +46,7 @@ To shut down the container run
 ```
 yarn stop:db
 ```
-You can confirm that you database is running by checking Docker Desktop. There you'll see all the existing containers. You can also start and stop the container directly from there.
+You can confirm that you database (ab_dev) is running by checking Docker Desktop. There you'll see all the existing containers. You can also start and stop the container directly from there.
 2. Once your local database is up and running you will need to apply all migration history to it. To achieve that run the following command.
 ```
 npx prisma migrate dev

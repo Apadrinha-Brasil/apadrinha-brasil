@@ -34,7 +34,19 @@ DB_PASSWORD=<password>
 Replace `<username>` and `<password>` to any that you wish. If you'd like to use PgAdmin to more easily manage the PostgreSQL databse, you will need these credentials to connect PgAdmin to the containerized database.
 
 ### Setup PostgreSQL database
-1. Once your local database is up and running you will need to apply all migration history to it. To achieve that run the following command.
+1. Build the Postgres containerized database. If the docker container doesn't exist, run the following command to build it.
+```
+yarn build:db
+```
+If it has already been built before, running the above command will cause an error. To start an existing postgres container run
+```
+yarn start:db
+```
+To shut down the container run
+```
+yarn stop:db
+```
+2. Once your local database is up and running you will need to apply all migration history to it. To achieve that run the following command.
 ```
 npx prisma migrate dev
 ```

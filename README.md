@@ -25,11 +25,17 @@ yarn
 ```
 
 ### Configuration
-1. Create a configuration file (e.g., .env) and set the required environment variables. You will need it to connect Prisma to the database.
+1. Create a configuration `.env` file and set the required environment variables. You will need it to connect Prisma to the database.
 ```
 DATABASE_URL=postgresql://admin:1234@localhost:5432/ab_dev
 ```
 Note `admin` and `1234` in the database url. If you'd like to use PgAdmin or any other database management software to more easily manage the database, you will need these credentials to connect it to the database.
+
+2. Create a `.env.local` file and add the content below. This file contains the JWT secret used to encode and decode the user's password digest. It also contains the salt which is used as an increment data to the JWT payload.
+```
+JWT_SECRET=m53WWgzip74cX63avQS0hr5DMTVPALO6MVxpjueYe0eO3CLThpAbiurRk3hgaT
+HASH_SALT=E9iak6f7L2a9EqLGYJHhR04M8gTFUtvrDu33D3XEWIQFrEHNGKssjVFMXPkRz6
+```
 
 ### Setup PostgreSQL database
 Build the Postgres containerized database.

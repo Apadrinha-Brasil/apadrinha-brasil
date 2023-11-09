@@ -2,54 +2,56 @@
 - [ ] TODO: Add a quick description of the project here.
 
 ## Getting Started
-These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will help you get a copy of the project up and running on your local machine for development.
 
 ### Prerequisites
 Before you begin, ensure you have met the following requirements:
 - **Node.js**: Ensure you have Node.js version 16 installed. You can download it from [nodejs.org](https://nodejs.org/).
 - **Yarn**: The package manager is Yarn. Make sure to install it before proceeding. Follow the instructions in the [official website](https://classic.yarnpkg.com/en/docs/install).
-- **Docker**: We use docker to run a containerized PostgreSQL database. You will need to have the Docker CLI installed to run the required commands to create, start, and stop the container. We recommend installing Docker Desktop which is the Docker's GUI software for managing containers. Once you install Docker Desktop it will have installed the Docker CLI as well. Go to the [official website](https://www.docker.com/products/docker-desktop/) to install Docker Desktop.
+- **Docker**: We use docker to run a containerized PostgreSQL database. You will need to have the Docker CLI installed to run the required commands to build, start, and stop the container. We recommend installing Docker Desktop which is the Docker's GUI software for managing containers. Once you install Docker Desktop it will have installed the Docker CLI as well. Go to the [official website](https://www.docker.com/products/docker-desktop/) to install Docker Desktop.
 
 ### First steps
-1. Clone the repository
+1. Clone the repository.
 ```
 git clone https://github.com/Apadrinha-Brasil/apadrinha-brasil.git
 ```
-2. Navigate to the project directory
+2. Navigate to the project directory.
 ```
 cd apadrinha-brasil
 ```
-3. Install dependencies
+3. Install dependencies.
 ```
-yarn install
+yarn
 ```
 
 ### Configuration
-1. Create a configuration file (e.g., .env) and set the required environment variables. You will need it to set up the database.
+1. Create a configuration file (e.g., .env) and set the required environment variables. You will need it to connect Prisma to the database.
 ```
-DATABASE_URL=postgresql://${DB_USERNAME}:${DB_PASSWORD}@localhost:5432/ab_dev
-DB_USERNAME=<username>
-DB_PASSWORD=<password>
+DATABASE_URL=postgresql://admin:1234@localhost:5432/ab_dev
 ```
-Replace `<username>` and `<password>` to any that you wish. If you'd like to use PgAdmin to more easily manage the PostgreSQL databse, you will need these credentials to connect PgAdmin to the containerized database.
+Note `admin` and `1234` in the database url. If you'd like to use PgAdmin or any other database management software to more easily manage the database, you will need these credentials to connect it to the database.
 
 ### Setup PostgreSQL database
-1. Build the Postgres containerized database. If the docker container doesn't exist, run the following command to build it.
+Build the Postgres containerized database.
+1. If the docker container doesn't exist (i.e. you've never successfully ran the below script), run the following command to build it.
 ```
 yarn build:db
 ```
-If it has already been built before, running the above command will cause an error. To start an existing postgres container run
+If the script above went well, the 2 following scripts can be skipped for the first time setup.
+
+To start an existing postgres container.
 ```
 yarn start:db
 ```
-To shut down the container run
+To shut down the container.
 ```
 yarn stop:db
 ```
-You can confirm that you database (ab_dev) is running by checking Docker Desktop. There you'll see all the existing containers. You can also start and stop the container directly from there.
-2. Once your local database is up and running you will need to apply all migration history to it. To achieve that run the following command.
+You can confirm that the container `postgresql` is running by checking Docker Desktop or running `docker ps` on your terminal. It will show all the running containers. You can also start and stop the container directly from Docker Desktop.
+
+2. Once your local database is up and running you will need to apply all migration history to it.
 ```
-npx prisma migrate dev
+yarn migrate:db
 ```
 
 ### Run the application
@@ -57,10 +59,14 @@ npx prisma migrate dev
 ```
 yarn dev
 ```
+2. If you'd rather use Prisma built-in database manager instead of installing other software, you can do so.
+```
+yarn studio:db
+```
 
 ### ES Lint and Prettier
-It is recommended to install the ES Lint extension (by Microsoft) for VS Code as it highlights lint errors. It will also enable `.vscode/settings.json` to enforce lint fixes when files are saved. 
-> **Note**: Applying fixes when saving files can become annoying for some people so this feature may change in the future based on feedback from the dev team. If this is something you'd like to discuss about, please bring the subject up to be discussed with the dev team.
+It is recommended to install the ES Lint extension (by Microsoft) for VS Code as it highlights lint errors and warnings. It will also enable `.vscode/settings.json` to enforce lint fixes when files are saved. 
+> **Note**: All the rules added was an initial set of rules to start off, but it's open for discussion what rules could be added and removed.
 
 ## Deploy on Vercel
 

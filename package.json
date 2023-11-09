@@ -10,7 +10,9 @@
     "lint:fix": "next lint --fix",
     "build:db": "docker-compose up -d",
     "start:db": "docker-compose start",
-    "stop:db": "docker-compose stop"
+    "stop:db": "docker-compose stop",
+    "migrate:db": "npx prisma migrate dev",
+    "studio:db": "npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^5.4.2",

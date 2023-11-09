@@ -5,9 +5,7 @@ const getOptions = <B>({ method, body }: OptionsParams<B>): RequestInit => ({
   method,
   body: body ? JSON.stringify(body) : null,
   cache: 'no-store',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  headers: { 'Content-Type': 'application/json', },
 })
 
 export const http = {

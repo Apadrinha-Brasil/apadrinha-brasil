@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server'
 import { errorToObject, http } from './utils'
 import { JwtCookieSuccess } from './app/api/v1/jwt/[token]/route'
 import { ACCESS_TOKEN_KEY, CookieService } from './server/modules/cookie'
+import HttpException from './utils/HttpException'
 
 export async function middleware(): Promise<NextResponse | void> {
   try {
-    const error = new Error('Unauthorized')
+    const error = new HttpException(401, 'Unauthorized')
 
     const token = CookieService.get(ACCESS_TOKEN_KEY)?.value
     if (!token) throw error

@@ -17,6 +17,7 @@ const LoginPage = () => {
     submitHandler,
     seconds,
     loggedIn,
+    error,
     userFirstName
   } = useLoginPage()
 
@@ -68,6 +69,13 @@ const LoginPage = () => {
         >
           {isLogin ? 'Login' : 'Cadastrar'}
         </button>
+        {
+          error && (
+            <div className="mt-2 font-extrabold text-red-600">
+              {error}
+            </div>
+          )
+        }
       </form>
       <button
         className="text-blue-600 my-5 block"

@@ -21,6 +21,7 @@ type LoginPageHook = {
   readonly submitHandler: (e: SyntheticEvent) => Promise<void>
   readonly seconds: number
   readonly loggedIn: boolean
+  readonly error: string
   readonly userFirstName: string
 }
 
@@ -32,6 +33,7 @@ export const useLoginPage = (): LoginPageHook => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loggedIn, setLogged] = useState(false)
+  const [error, setError] = useState('')
   const [user, setUser] = useState<UserDto | null>(null)
 
   const disabled = useMemo(() => {
@@ -47,14 +49,18 @@ export const useLoginPage = (): LoginPageHook => {
 
   const submitHandler = async (e: SyntheticEvent): Promise<void> => {
     e.preventDefault()
+    setError('')
     if (isLogin){
       const credentials: Credentials = { email, password }
       const data = await http.post<Credentials, UserDto | ErrorResponse>(
         'api/v1/auth/login',
         credentials
       )
-      console.log(data)
-      if ('firstName' in data) setUser(data)
+      if ('error' in data) {
+        setError(data.error as string)
+        return
+      }
+      setUser(data)
       setLogged(true)
     } else {
       const payload: SignupPayload = { firstName, lastName, email, password }
@@ -62,18 +68,21 @@ export const useLoginPage = (): LoginPageHook => {
         'api/v1/auth/signup',
         payload
       )
-      console.log(data)
-      if ('firstName' in data) setUser(data)
+      if ('error' in data) {
+        setError(data.error as string)
+        return
+      }
+      setUser(data)
       setLogged(true)
     }
   }
 
   useEffect(() => {
-    if (seconds === 0) {
+    if (seconds === 0 && user) {
       setLogged(false)
-      if (user) setUser(null)
+      setUser(null)
     }
-  }, [seconds])
+  }, [seconds, user])
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null
@@ -120,6 +129,7 @@ export const useLoginPage = (): LoginPageHook => {
     submitHandler,
     seconds,
     loggedIn,
+    error,
     userFirstName: user ? user.firstName : ''
   }
 }

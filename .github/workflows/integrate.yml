@@ -43,6 +43,8 @@ jobs:
 
       - name: Run Tests
         run: yarn unit
+        env:
+          DATABASE_URL: postgres://admin:1234@localhost:5433/ab_dev
 
       - name: Lint Code
         run: yarn lint

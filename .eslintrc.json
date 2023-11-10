@@ -1,7 +1,7 @@
 {
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
-    "prefer-const": "error",
+    "prefer-const": "warn",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -15,21 +15,16 @@
       }
     ],
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "max-len": ["error", { "code": 100 }],
+    "@typescript-eslint/no-unused-vars": "warn",
     "comma-spacing": ["warn", { "before": false, "after": true }],
-    "semi": ["error", "never"],
+    "semi": ["warn", "never"],
     "no-loss-of-precision": ["error"],
     "no-unused-private-class-members": ["warn"],
     "comma-dangle": ["off", "never"],
     "dot-location": ["warn", "property"],
-    "object-curly-newline": ["error", {
-      "ObjectExpression": { "multiline": true, "minProperties": 4 },
-      "ObjectPattern": { "multiline": true, "minProperties": 4 },
-      "ImportDeclaration": "never",
-      "ExportDeclaration": { "multiline": true, "minProperties": 4 }
-    }],
-    "object-curly-spacing": ["error", "always"]
+    "object-curly-spacing": ["warn", "always"],
+    "indent": ["error", 2],
+    "eol-last": ["error", "always"]
   },
   "overrides": [
     {

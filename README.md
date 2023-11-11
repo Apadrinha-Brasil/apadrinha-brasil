@@ -1,81 +1,81 @@
 # Apadrinha Brasil App
-- [ ] TODO: Add a quick description of the project here.
+- [ ] TODO: Adicione uma breve descrição do projeto aqui.
 
-## Getting Started
-These instructions will help you get a copy of the project up and running on your local machine for development.
+## Instruções para Configuração Local
+Estas instruções te ajudarão a obter uma cópia do projeto e a colocá-lo em funcionamento em sua máquina local para desenvolvimento.
 
-### Prerequisites
-Before you begin, ensure you have met the following requirements:
-- **Node.js**: Ensure you have Node.js version 16 installed. You can download it from [nodejs.org](https://nodejs.org/).
-- **Yarn**: The package manager is Yarn. Make sure to install it before proceeding. Follow the instructions in the [official website](https://classic.yarnpkg.com/en/docs/install).
-- **Docker**: We use docker to run a containerized PostgreSQL database. You will need to have the Docker CLI installed to run the required commands to build, start, and stop the container. We recommend installing Docker Desktop which is the Docker's GUI software for managing containers. Once you install Docker Desktop it will have installed the Docker CLI as well. Go to the [official website](https://www.docker.com/products/docker-desktop/) to install Docker Desktop.
+### Pré-requisitos
+Antes de começar, certifique-se de que atende aos seguintes requisitos:
+- **Node.js**: Certifique-se de ter o Node.js na versão 16 instalado. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
+- **Yarn**: O gerenciador de pacotes é o Yarn. Certifique-se de instalá-lo antes de prosseguir. Siga as instruções no [site oficial](https://classic.yarnpkg.com/en/docs/install).
+- **Docker**: Usamos o Docker para executar um banco de dados PostgreSQL em um contêiner. Você precisará ter o Docker CLI instalado para executar os comandos necessários para construir, iniciar e parar o contêiner. Recomendamos a instalação do Docker Desktop, que é o software GUI do Docker para gerenciar contêineres. Uma vez que você instala o Docker Desktop, ele também instalará o Docker CLI. Acesse o [site oficial](https://www.docker.com/products/docker-desktop/) para instalar Docker Desktop.
 
-### First steps
-1. Clone the repository.
+### Primeiros passos
+1. Clone o repositório.
 ```
 git clone https://github.com/Apadrinha-Brasil/apadrinha-brasil.git
 ```
-2. Navigate to the project directory.
+2. Navegue para a pasta do projeto.
 ```
 cd apadrinha-brasil
 ```
-3. Install dependencies.
+3. Instale dependências.
 ```
 yarn
 ```
 
-### Configuration
-1. Create a configuration `.env` file and set the required environment variables. You will need it to connect Prisma to the database.
+### Configuração
+1. Crie um arquivo de configuração '.env' e defina as variáveis de ambiente necessárias. Você precisará disso para conectar o Prisma ao banco de dados.
 ```
 DATABASE_URL=postgresql://admin:1234@localhost:5432/ab_dev
 ```
-Note `admin` and `1234` in the database url. If you'd like to use PgAdmin or any other database management software to more easily manage the database, you will need these credentials to connect it to the database.
+Observe `admin` e `1234` na URL de conexão do banco de dados. Se desejar usar o PgAdmin ou qualquer outro software de gerenciamento de banco de dados para facilitar o desenvolvimento, você precisará dessas credenciais para conectá-lo ao banco de dados. Existe a opção de usar Prisma Studio o que evita a necessidade de instalar um software para gerenciamento do banco de dados.
 
-2. Create a `.env.local` file and add the content below. This file contains the JWT secret used to encode and decode the user's password digest. It also contains the salt which is used as an increment data to the JWT payload.
+2. Crie um arquivo `.env.local` e adicione o conteúdo abaixo. Este arquivo contém o segredo JWT usado para codificar e decodificar a senha do usuário. Ele também contém o salt, que é usado como um dado de incremento para fortalecer a segurança do token.
 ```
 JWT_SECRET=m53WWgzip74cX63avQS0hr5DMTVPALO6MVxpjueYe0eO3CLThpAbiurRk3hgaT
 HASH_SALT=E9iak6f7L2a9EqLGYJHhR04M8gTFUtvrDu33D3XEWIQFrEHNGKssjVFMXPkRz6
 ```
 
-### Setup PostgreSQL database
-Build the Postgres containerized database.
-1. If the docker container doesn't exist (i.e. you've never successfully ran the below script), run the following command to build it.
+### Configurar o banco de dados PostgreSQL
+Construa o banco de dados PostgreSQL em um contêiner.
+1. Se o contêiner Docker não existir, ou seja, se você nunca executou com sucesso o script abaixo, execute-o para construí-lo.
 ```
 yarn build:db
 ```
-If the script above went well, the 2 following scripts can be skipped for the first time setup.
+Se o script acima foi bem-sucedido, os dois scripts a seguir podem ser ignorados na configuração inicial.
 
-To start an existing postgres container.
+Para iniciar um contêiner PostgreSQL existente.
 ```
 yarn start:db
 ```
-To shut down the container.
+Para parar o containêr.
 ```
 yarn stop:db
 ```
-You can confirm that the container `postgresql` is running by checking Docker Desktop or running `docker ps` on your terminal. It will show all the running containers. You can also start and stop the container directly from Docker Desktop.
+Você pode confirmar que o contêiner `postgresql` está em execução verificando no Docker Desktop ou executando `docker ps` no seu terminal. Isso mostrará todos os contêineres em execução. Você também pode iniciar e parar o contêiner diretamente do Docker Desktop.
 
-2. Once your local database is up and running you will need to apply all migration history to it.
+2. Assim que seu banco de dados local estiver em execução, você precisará aplicar todo o histórico de migração à ele.
 ```
 yarn migrate:db
 ```
 
-### Run the application
-1. To start the development server run this command.
+### Execute a aplicação
+1. Para iniciar o servidor de desenvolvimento, execute este comando.
 ```
 yarn dev
 ```
-2. If you'd rather use Prisma built-in database manager instead of installing other software, you can do so.
+2. Se preferir, você pode usar o gerenciador de banco de dados incorporado do Prisma em vez de instalar outro software.
 ```
 yarn studio:db
 ```
 
-### ES Lint and Prettier
-It is recommended to install the ES Lint extension (by Microsoft) for VS Code as it highlights lint errors and warnings. It will also enable `.vscode/settings.json` to enforce lint fixes when files are saved. 
+### ES Lint
+É recomendável instalar a extensão ES Lint (da Microsoft) para o VS Code, pois ela destaca erros e avisos de lint diretamente no editor. Além disso, habilita o arquivo `.vscode/settings.json` para impor correções de lint ao salvar os arquivos. 
 > **Note**: All the rules added was an initial set of rules to start off, but it's open for discussion what rules could be added and removed.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A maneira mais fácil de implantar seu aplicativo Next.js é usar a [Platforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) dos criadores do Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Consulte nossa [documentação de implantação do Next.js](https://nextjs.org/docs/deployment) para obter mais detalhes.

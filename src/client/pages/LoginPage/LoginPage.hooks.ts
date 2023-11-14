@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Credentials, ErrorResponse } from '@/app/api/v1/auth/login/route'
 import { SignupPayload } from '@/app/api/v1/auth/signup/route'
 import { PingPayload } from '@/app/api/v1/ping/route'

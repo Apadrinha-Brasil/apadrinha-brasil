@@ -1,9 +1,9 @@
 import { JwtService } from '.'
 import { UserSafe, getUserServiceInstance } from '../user'
+import { unauthorizedError } from '@/utils/padronized_errors'
 
 export class RefreshTokenService {
   static async get(oldToken: string): Promise<string> {
-    const unauthorizedError = new Error('Unauthorized')
     if (!oldToken) throw unauthorizedError
 
     const { data } = JwtService.decode<{ data: UserSafe }>(oldToken)

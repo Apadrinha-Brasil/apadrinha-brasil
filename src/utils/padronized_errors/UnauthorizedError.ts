@@ -5,4 +5,4 @@ class UnauthorizedError extends Error {
   }
 }
 
-export const unauthorizedError = new UnauthorizedError('Unauthorized')
+export const unauthorizedError = new UnauthorizedError('Não Autorizado')

@@ -1,7 +1,6 @@
-export default function Home() {
-  return (
-    <main>
-      <h1>Apadrinha Brasil</h1>
-    </main>
-  )
+'use client'
+import LoginPage from '@/client/pages/LoginPage'
+
+export default function Login() {
+  return <LoginPage />
 }

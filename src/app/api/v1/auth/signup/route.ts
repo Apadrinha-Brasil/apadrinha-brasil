@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { UserSafe } from '@/server/modules/user'
 import { getAuthServiceInstance } from '@/server/modules/auth'
-import { errorToObject } from '@/utils'
+import { errorToObject } from '@/common/errors'
 
 export type SignupPayload = {
   readonly firstName: string

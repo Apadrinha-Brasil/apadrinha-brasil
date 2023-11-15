@@ -4,14 +4,14 @@ import { ACCESS_TOKEN_KEY, CookieService } from '../cookie'
 import { JwtService } from '../jwt'
 import { SignupPayload } from '@/app/api/v1/auth/signup/route'
 import { ArgonService } from '../argon'
-import { invalidCredentials } from '@/utils/padronized_errors'
+import { InvalidCredentialsError } from '@/common/errors'
 
 class AuthService {
   constructor(private readonly userService: IUserService) {}
 
   async login({ email, password }: Credentials): Promise<UserDto> {
     const user = await this.userService.validateUser(email, password)
-    if (!user) throw invalidCredentials
+    if (!user) throw new InvalidCredentialsError('Credenciais Invalidas')
 
     this.issueToken(user.values)
 
@@ -20,7 +20,7 @@ class AuthService {
 
   async signup({ firstName, lastName, email, password }: SignupPayload): Promise<UserDto> {
     const emailAvailable = await this.userService.isEmailAvailable(email)
-    if (!emailAvailable) throw invalidCredentials
+    if (!emailAvailable) new InvalidCredentialsError('Credenciais Invalidas')
     const newUser: UnsavedUser = {
       firstName,
       lastName,

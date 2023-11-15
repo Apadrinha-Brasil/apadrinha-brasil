@@ -11,7 +11,7 @@ class AuthService {
 
   async login({ email, password }: Credentials): Promise<UserDto> {
     const user = await this.userService.validateUser(email, password)
-    if (!user) throw new InvalidCredentialsError('Credenciais Invalidas')
+    if (!user) throw new InvalidCredentialsError()
 
     this.issueToken(user.values)
 
@@ -20,7 +20,7 @@ class AuthService {
 
   async signup({ firstName, lastName, email, password }: SignupPayload): Promise<UserDto> {
     const emailAvailable = await this.userService.isEmailAvailable(email)
-    if (!emailAvailable) new InvalidCredentialsError('Credenciais Invalidas')
+    if (!emailAvailable) new InvalidCredentialsError()
     const newUser: UnsavedUser = {
       firstName,
       lastName,

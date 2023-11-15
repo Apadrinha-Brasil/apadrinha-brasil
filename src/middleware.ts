@@ -7,10 +7,10 @@ import { UnauthorizedError, errorToObject } from './common/errors'
 export async function middleware(): Promise<NextResponse | void> {
   try {
     const token = CookieService.get(ACCESS_TOKEN_KEY)?.value
-    if (!token) throw new UnauthorizedError('Não Autorizado')
+    if (!token) throw new UnauthorizedError()
 
     const { success, refreshedToken } = await http.get<JwtCookieSuccess>(`http://localhost:3000/api/v1/jwt/${token}`)
-    if (!success || !refreshedToken) throw new UnauthorizedError('Não Autorizado')
+    if (!success || !refreshedToken) throw new UnauthorizedError()
 
     const response = NextResponse.next()
     response.cookies.set(ACCESS_TOKEN_KEY, refreshedToken, { httpOnly: true })

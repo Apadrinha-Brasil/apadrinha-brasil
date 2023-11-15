@@ -1,6 +1,6 @@
 export class UnauthorizedError extends Error {
-  constructor(mensagem: string) {
-    super(mensagem)
+  constructor() {
+    super('Não Autorizado')
     Object.setPrototypeOf(this, UnauthorizedError.prototype)
   }
 }

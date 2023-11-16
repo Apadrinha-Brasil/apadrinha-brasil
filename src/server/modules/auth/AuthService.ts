@@ -20,7 +20,7 @@ class AuthService {
 
   async signup({ firstName, lastName, email, password }: SignupPayload): Promise<UserDto> {
     const emailAvailable = await this.userService.isEmailAvailable(email)
-    if (!emailAvailable) new InvalidCredentialsError()
+    if (!emailAvailable) throw new InvalidCredentialsError()
     const newUser: UnsavedUser = {
       firstName,
       lastName,

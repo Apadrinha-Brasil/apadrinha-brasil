@@ -5,6 +5,7 @@ import { JwtService } from '../jwt'
 import { SignupPayload } from '@/app/api/v1/auth/signup/route'
 import { ArgonService } from '../argon'
 import { InvalidCredentialsError } from '@/common/errors'
+import { UnavailableEmailError } from '@/common/errors/UnavailableEmailError'
 
 class AuthService {
   constructor(private readonly userService: IUserService) {}
@@ -20,7 +21,7 @@ class AuthService {
 
   async signup({ firstName, lastName, email, password }: SignupPayload): Promise<UserDto> {
     const emailAvailable = await this.userService.isEmailAvailable(email)
-    if (!emailAvailable) throw new InvalidCredentialsError()
+    if (!emailAvailable) throw new UnavailableEmailError()
     const newUser: UnsavedUser = {
       firstName,
       lastName,

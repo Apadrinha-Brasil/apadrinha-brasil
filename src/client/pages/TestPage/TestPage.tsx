@@ -1,5 +1,5 @@
 'use client'
-import { Input } from "@/client/components"
+import { Input } from '@/client/components'
 
 const TestPage = () => {
   return (

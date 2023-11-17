@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { useFormik } from 'formik'
 
 export const Input = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -8,9 +8,9 @@ export const Input = () => {
       email: '',
     },
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values, null, 2))
     },
-  });
+  })
   return (
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="email">Email Address</label>
@@ -24,5 +24,5 @@ export const Input = () => {
 
       <button type="submit">Submit</button>
     </form>
-  );
-};
+  )
+}

@@ -1,10 +1,10 @@
 'use client'
-import { Input } from '@/client/components'
+import { MainForm } from '@/client/components'
 
 const TestPage = () => {
   return (
     <div>
-      <Input />
+      <MainForm />
     </div>
   )
 }

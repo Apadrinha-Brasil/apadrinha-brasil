@@ -1,28 +1,21 @@
-import { useFormik } from 'formik'
+import React, { ChangeEvent } from 'react'
 
-export const Input = () => {
-  // Pass the useFormik() hook initial form values and a submit function that will
-  // be called when the form is submitted
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-    },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2))
-    },
-  })
+type InputTypes = 'text' | 'number' | 'password' | 'email';
+
+interface InputProps {
+  type: InputTypes;
+  value: string | number;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  _placeHolder?: string;
+}
+
+export const Input: React.FC<InputProps> = ({ type, value, handleChange, _placeHolder = '' }) => {
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-
-      <button type="submit">Submit</button>
-    </form>
+    <input
+      placeholder={_placeHolder}
+      type={type}
+      onChange={handleChange}
+      value={value}
+    />
   )
 }

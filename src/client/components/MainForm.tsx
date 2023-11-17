@@ -1,5 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
+import { Input } from '.'
+
 
 export const MainForm = () => {
   const formik = useFormik({
@@ -13,14 +15,7 @@ export const MainForm = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-
+      <Input name="email" type="email" value={formik.values.email} handleChange={formik.handleChange}/>
       <button type="submit">Submit</button>
     </form>
   )

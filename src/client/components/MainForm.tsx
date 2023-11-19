@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Field, Form } from 'formik'
-import { Input, Select } from '.'
+import { Input, Select, CheckboxGroup } from '.'
 
 export const MainForm = () => {
   const optionsSelect = [
@@ -10,11 +10,18 @@ export const MainForm = () => {
     { value: 'opcao3', label: 'Opção 3' },
   ]
 
+  const optionsCheckbox = [
+    { value: 'checkbox1', label: 'Checkbox 1' },
+    { value: 'checkbox2', label: 'Checkbox 2' },
+    { value: 'checkbox3', label: 'Checkbox 3' },
+  ]
+
   return (
     <Formik
       initialValues={{
         email: '',
         selectOption: '',
+        checkboxes: [],
       }}
       onSubmit={(values) => {
         alert(JSON.stringify(values, null, 2))
@@ -36,10 +43,17 @@ export const MainForm = () => {
           component={Select}
         />
 
+        <Field
+          name="checkboxes"
+          label="Escolha as opções:"
+          options={optionsCheckbox}
+          component={CheckboxGroup}
+        />
+
         <button type="submit">Submit</button>
       </Form>
     </Formik>
   )
 }
 
-export default MainForm
+

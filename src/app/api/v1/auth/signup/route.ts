@@ -10,6 +10,12 @@ export type SignupPayload = {
   readonly password: string
 }
 
+/**
+ * API endpoint para registro de novos usuários.
+ *
+ * @param req - A requisição HTTP.
+ * @returns Uma resposta contendo os dados do novo usuário registrado ou uma mensagem de erro em caso de falha.
+ */
 export const POST = async (req: NextRequest): Promise<NextResponse<UserSafe | unknown>> => {
   try {
     const signupPayload: SignupPayload = await req.json()

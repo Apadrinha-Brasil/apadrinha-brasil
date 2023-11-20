@@ -1,5 +1,8 @@
 import { UserSafe } from '.'
 
+/**
+ * Representa um Objeto de Transferência de Dados (DTO) para um usuário com informações sensíveis omitidas.
+ */
 export class UserDto {
   constructor(private fields: UserSafe) {}
 

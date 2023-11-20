@@ -10,6 +10,12 @@ export type Credentials = {
 
 export type ErrorResponse = { error: unknown }
 
+/**
+ * API endpoint para autenticação de usuário por meio de credenciais.
+ *
+ * @param req - A requisição HTTP.
+ * @returns Uma resposta contendo os dados do usuário autenticado ou uma mensagem de erro em caso de falha.
+ */
 export const POST = async (req: NextRequest): Promise<NextResponse<UserSafe | ErrorResponse>> => {
   try {
     const credentials: Credentials = await req.json()

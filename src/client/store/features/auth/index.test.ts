@@ -43,7 +43,7 @@ describe('authSlice', () => {
           user: mockUser as UserDto,
         },
       }
-  
+
       store = configureStore({
         reducer: {
           auth: authReducer,

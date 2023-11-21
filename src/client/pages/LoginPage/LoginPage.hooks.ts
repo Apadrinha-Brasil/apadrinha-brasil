@@ -2,9 +2,12 @@
 import { Credentials, ErrorResponse } from '@/app/api/v1/auth/login/route'
 import { SignupPayload } from '@/app/api/v1/auth/signup/route'
 import { PingPayload } from '@/app/api/v1/ping/route'
+import { useAppDispatch } from '@/client/store'
+import { login, logout, userSelector } from '@/client/store/features/auth'
 import { UserDto } from '@/server/modules/user'
 import { http } from '@/utils'
-import { Dispatch, SetStateAction, SyntheticEvent, useEffect, useMemo, useState } from 'react'
+import { Dispatch, SetStateAction, SyntheticEvent, useCallback, useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 type LoginPageHook = {
   readonly isLogin: boolean
@@ -35,7 +38,8 @@ export const useLoginPage = (): LoginPageHook => {
   const [password, setPassword] = useState('')
   const [loggedIn, setLogged] = useState(false)
   const [error, setError] = useState('')
-  const [user, setUser] = useState<UserDto | null>(null)
+  const user = useSelector(userSelector)
+  const dispatch = useAppDispatch()
 
   const disabled = useMemo(() => {
     if (isLogin) return !email || !password
@@ -44,6 +48,9 @@ export const useLoginPage = (): LoginPageHook => {
 
   const clickHandler = async (): Promise<void> => {
     const data = await http.get<PingPayload>('api/v1/ping')
+    if ('error' in data) {
+      if (data.error === 'Não Autorizado') dispatch(logout())
+    }
     if (loggedIn) setSeconds(10)
     console.log(data)
   }
@@ -59,9 +66,10 @@ export const useLoginPage = (): LoginPageHook => {
       )
       if ('error' in data) {
         setError(data.error as string)
+        if (data.error === 'Não Autorizado') dispatch(logout())
         return
       }
-      setUser(data)
+      dispatch(login(data))
       setLogged(true)
     } else {
       const payload: SignupPayload = { firstName, lastName, email, password }
@@ -71,21 +79,15 @@ export const useLoginPage = (): LoginPageHook => {
       )
       if ('error' in data) {
         setError(data.error as string)
+        if (data.error === 'Não Autorizado') dispatch(logout())
         return
       }
-      setUser(data)
+      dispatch(login(data))
       setLogged(true)
     }
   }
 
-  useEffect(() => {
-    if (seconds === 0 && user) {
-      setLogged(false)
-      setUser(null)
-    }
-  }, [seconds, user])
-
-  useEffect(() => {
+  const setupInterval = useCallback((): (() => void) | undefined => {
     let interval: NodeJS.Timeout | null = null
 
     if (!loggedIn) {
@@ -103,6 +105,8 @@ export const useLoginPage = (): LoginPageHook => {
           return prevSeconds - 1
         }
         if (interval) clearInterval(interval)
+        setLogged(false)
+        dispatch(logout())
         return 0
       })
     }, 1000)
@@ -112,7 +116,11 @@ export const useLoginPage = (): LoginPageHook => {
         clearInterval(interval)
       }
     }
-  }, [loggedIn])
+  }, [dispatch, loggedIn])
+
+  useEffect(() => {
+    setupInterval()
+  }, [setupInterval])
 
   return {
     isLogin,

@@ -25,7 +25,8 @@
     "dot-location": ["warn", "property"],
     "object-curly-spacing": ["warn", "always"],
     "indent": ["error", 2],
-    "eol-last": ["error", "always"]
+    "eol-last": ["error", "always"],
+    "no-trailing-spaces": "error"
   },
   "overrides": [
     {

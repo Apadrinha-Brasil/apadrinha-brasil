@@ -9,7 +9,7 @@ export class ArgonService {
    * @param password - A senha a ser criptografada.
    * @param timeCost - O custo de tempo para a função de hash (opcional).
    *                  Quanto maior o valor, mais seguro, mas mais lento.
-   * 
+   *
    * @returns Uma Promise que resolve para hash resultante da senha criptografada.
    */
   static async hash(password: string, timeCost?: number): Promise<string> {
@@ -23,7 +23,7 @@ export class ArgonService {
    *
    * @param hash - O hash a ser verificado.
    * @param plain - A senha a ser comparado com o hash.
-   * 
+   *
    * @returns Uma Promise que resolve para verdadeiro se o hash corresponder à senha, e falso caso contrário.
    */
   static async verify(hash: string, plain: string): Promise<boolean> {

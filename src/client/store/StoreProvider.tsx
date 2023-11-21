@@ -8,7 +8,7 @@ interface Props {
 }
 
 /**
- * Fornece a Redux store aos componentes descendentes usado o componente `Provider`.
+ * Fornece a Redux store aos componentes descendentes usando o componente `Provider`.
  * @component
  * @param {Object} props - As props do componente.
  * @param {React.ReactNode} props.children - Os elementos filhos que serão envolvidos pela loja Redux.

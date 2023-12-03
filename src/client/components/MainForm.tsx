@@ -26,7 +26,7 @@ export const MainForm = () => {
   const optionsRadio = [
     { value: 'radio1', label: 'Radio 1' },
     { value: 'radio2', label: 'Radio 2' },
-    { value: 'radio3', label: 'Radio 3' },
+    { value: 'radio3', label: 'Radio 3' }
   ]
 
   return (

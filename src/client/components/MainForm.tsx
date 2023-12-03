@@ -70,7 +70,7 @@ export const MainForm = () => {
             label="Escolha as opções:"
             options={optionsCheckbox}
             component={CheckboxGroup}
-            className="mt-4" 
+            className="mt-4"
           />
           <ErrorMessage className='error text-red-700' name="checkboxes" component="div" />
 

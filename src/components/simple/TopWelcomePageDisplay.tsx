@@ -28,7 +28,7 @@ function TopWelcomePageDisplay(
               className='w-full'
               priority
             /> :
-          <></>
+            <></>
         }
       </WelcomeLayout>
       <div className='flex flex-col justify-around p-5 h-[49vh]'>

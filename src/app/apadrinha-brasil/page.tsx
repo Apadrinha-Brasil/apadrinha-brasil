@@ -8,7 +8,7 @@ function ApadrinhaBrasil() {
       <Image
         src='/AB-Logo.png'
         width='226'
-        height='111' 
+        height='111'
         alt='Apadrinha Brasil'
       />
     </LinearGradientBackground>

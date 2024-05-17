@@ -19,3 +19,7 @@
 body {
   min-height: 100vh;
 }
+
+.text-balance {
+  text-wrap: balance;
+}

@@ -149,8 +149,8 @@ const ImputEnable = (props:PropsImput) => {
 const ImputCheckBox = (props:PropsImput) => {
     return(
         <>
-            <div><input type="checkbox" name="" id="" className='mx-5 rounded-s-full'/>Sim</div>  <br />
-            <div><input type="checkbox" name="" id="" className='mx-5' />Não</div>
+            <div><input type="radio" name="" id="" className='mx-5' />Sim</div>  <br />
+            <div><input type="radio" name="" id="" className='mx-5' />Não</div>
                  
         </>
     )

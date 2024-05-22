@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import apadrinhaLogo from "../../../../public/apadrinha.svg";
 import { ComponentProps } from 'react';
-export const EnablePage = () => {
+export const RegisterPage = () => {
     return(
         <>
         <body>

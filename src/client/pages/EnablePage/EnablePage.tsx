@@ -26,7 +26,7 @@ export const EnablePage = () => {
                     <h3 className='mb-2 font-sans font-medium text-[16px]'>
                         Qual município você mora?
                     </h3>
-                    <input name="" id=""value="*ComboBox*" className='bg-green-200 w-full h-14'/>
+                    <select className='bg-green-200 w-full h-14' name="" id="" ></select>
                 </article>
 
                 <article className='mb-8'>

@@ -1,14 +1,14 @@
-import Link from 'next/link'
+//import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
 
 function PinkLink(
   {
-    href,
+    //href,
     children,
     className,
     onClick,
   }: {
-    href: string
+    //href: string
     children: React.ReactNode
     className?: string
     onClick?: React.MouseEventHandler<HTMLButtonElement>

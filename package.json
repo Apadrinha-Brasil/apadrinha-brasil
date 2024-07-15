@@ -13,6 +13,7 @@
     "build:db": "docker-compose up -d",
     "start:db": "docker-compose start",
     "stop:db": "docker-compose stop",
+    "down:db": "docker-compose down",
     "migrate:db": "npx prisma migrate dev",
     "studio:db": "npx prisma studio"
   },

@@ -70,6 +70,34 @@ yarn dev
 yarn studio:db
 ```
 
+### PG Admin
+Após inicialização do banco de dados será possível acessá-lo através do PG Admin em localhost:5000. Para acessar basta informar as credenciais.
+
+Login:
+```
+app.apadrinhabrasil@gmail.com
+```
+
+Senha:
+```
+postgres
+```
+
+Para conectar com o banco clique com "Servers" com o botão direito e em "Registrar" > "Servidor...".
+
+Informe o nome ao banco de dados:
+```
+postgresql-ab
+```
+
+E em "Conexão" informe os seguintes dados:
+```
+Host name/address: 172.36.0.2
+Maintenance database: ab_dev
+Username: admin
+Senha: 1234
+```
+
 ### ES Lint
 É recomendável instalar a extensão ES Lint (da Microsoft) para o VS Code, pois ela destaca erros e avisos de lint diretamente no editor. Além disso, habilita o arquivo `.vscode/settings.json` para impor correções de lint ao salvar os arquivos. 
 > **Note**: All the rules added was an initial set of rules to start off, but it's open for discussion what rules could be added and removed.

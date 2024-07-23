@@ -19,11 +19,18 @@ const config: Config = {
         'abWhite': '#ffffff',
         'abGrayText': '#79747e',
         'abGreenText': '#345040',
+        'abGray': '#F2F5F4',
+        'abOrange': '#EC781D',
+        'abOrangeLight': '#FFE9D8',
       },
       borderRadius: {
         '4xl': '2rem',
         '5xl': '2.2rem',
       },
+      boxShadow: {
+        DEFAULT: '0px 3px 8px 0px #79747e',
+        simple: '0px 0px 0px 10px #00000014',
+      }
     },
   },
   plugins: [],

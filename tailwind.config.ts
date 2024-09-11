@@ -16,6 +16,8 @@ const config: Config = {
       colors: {
         'abGreen': '#00923d',
         'abPink': '#ffaec9',
+        'abLightPink': '#FFEAF1',
+        'abDarkPink': '#E54B7E',
         'abWhite': '#ffffff',
         'abGrayText': '#79747e',
         'abGreenText': '#345040',

@@ -27,7 +27,7 @@ function InstitutionDescription() {
 
         <div className="flex gap-2 overflow-x-scroll w-screen">
           {tags.map((tag, index) => (
-            <TextTag key={index} text={tag} color="abOrange" bgColor="abOrangeLight" />
+            <TextTag key={index} text={tag} />
           ))}
         </div>
       </div>

@@ -35,7 +35,7 @@ function ProfileVideo({ src }: ProfileVideoProps) {
       )}
       <iframe
         ref={iFrameRef}
-        className={`w-full h-full rounded-3xl ${styles.iframeInitial}`}
+        className={`w-full h-full rounded-lg ${styles.iframeInitial}`}
         src={`${src}?enablejsapi=1`}
         referrerPolicy="strict-origin-when-cross-origin"
         allow="autoplay; encrypted-media"
